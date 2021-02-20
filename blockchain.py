@@ -77,6 +77,7 @@ def mine_block():
         "recipient": owner,
         "amount": MINING_REWARD,
     }
+    copied_transactions = open_transactions
     open_transactions.append(reward_transaction)
     block = {
         "previous_hash": hashed_block,
