@@ -1,6 +1,7 @@
 import functools
+import hashlib
+import json
 
-# Initializing our blockchain list
 MINING_REWARD = 10
 
 genesis_block = {
@@ -15,7 +16,7 @@ participants = {"Rosa"}
 
 
 def hash_block(block):
-    return "-".join([str(block[key]) for key in block])
+    return hashlib.sha256(json.dumps(block).encode()).hexdigest()
 
 
 def get_balance(participant):
@@ -27,7 +28,6 @@ def get_balance(participant):
         tx["amount"] for tx in open_transactions if tx["sender"] == participant
     ]
     tx_sender.append(open_tx_sender)
-    print(tx_sender)
     amount_sent = functools.reduce(
         lambda tx_sum, tx_amt: tx_sum + sum(tx_amt) if len(tx_amt) > 0 else tx_sum + 0,
         tx_sender,
@@ -77,6 +77,7 @@ def add_transaction(recipient, sender=owner, amount=1.0):
 def mine_block():
     last_block = blockchain[-1]
     hashed_block = hash_block(last_block)
+    print(hashed_block)
     reward_transaction = {
         "sender": "MINING",
         "recipient": owner,
