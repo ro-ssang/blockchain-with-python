@@ -58,7 +58,7 @@ def load_data():
                 )
                 updated_transactions.append(updated_transaction)
             open_transactions = updated_transactions
-    except IOError:
+    except (IOError, IndexError):
         genesis_block = {
             "previous_hash": "",
             "index": 0,
