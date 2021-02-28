@@ -225,7 +225,6 @@ while waiting_for_input:
     print("3: Ouput the blockchain blocks")
     print("4: Ouput participants")
     print("5: Check transaction validity")
-    print("h: Manipulate the chain")
     print("q: Quit")
     user_choice = get_user_choice()
 
