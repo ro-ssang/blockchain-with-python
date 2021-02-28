@@ -60,7 +60,7 @@ def load_data():
         open_transactions = updated_transactions
 
 
-load_data()
+# load_data()
 
 
 def save_data():
@@ -75,9 +75,7 @@ def save_data():
 
 def valid_proof(transactions, last_hash, proof):
     guess = (str(transactions) + str(last_hash) + str(proof)).encode()
-    print(guess)
     guess_hash = hash_string_256(guess)
-    print(guess_hash)
     return guess_hash[0:2] == "00"
 
 
