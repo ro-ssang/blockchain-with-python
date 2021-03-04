@@ -11,6 +11,8 @@ from transaction import Transaction
 
 MINING_REWARD = 10
 
+print(__name__)
+
 
 class Blockchain:
     def __init__(self, hosting_node_id):
